@@ -1,5 +1,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-<div ng-app="app" ng-controller="AppController as vm">
+<div ng-controller="AppController as vm">
   <div ng-controller="AuthController as auth">
     Current User: {{ auth.currentUser }}
   </div><br>
@@ -29,4 +29,6 @@
     .controller('AppController', function () {
       this.name = 'acoshift'
     })
+
+  angular.bootstrap(document, ['app'])
 </script>
