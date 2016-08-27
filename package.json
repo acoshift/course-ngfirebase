@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.8"
+  },
+  "standard": {
+    "globals": ["angular"]
   }
 }

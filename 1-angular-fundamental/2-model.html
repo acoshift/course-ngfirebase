@@ -1,0 +1,13 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<div ng-app="app" ng-controller="AppController as vm">
+  Enter name:
+  <input ng-model="vm.name">
+  <h1>Hi, {{ vm.name }}</h1>
+</div>
+<script>
+  angular
+    .module('app', [])
+    .controller('AppController', function () {
+      this.name = 'acoshift'
+    })
+</script>
