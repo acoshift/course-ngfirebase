@@ -1,0 +1,9 @@
+<!doctype html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<div ng-app="app">
+  <input ng-model="vm.input">
+  <div>{{ +vm.input * +vm.input }}</div>
+</div>
+<script>
+  angular.module('app', [])
+</script>

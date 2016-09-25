@@ -1,0 +1,16 @@
+<!doctype html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<div ng-app="app" ng-controller="MainController as vm">
+  <input ng-model="vm.input">
+  <button ng-click="vm.submit()">OK</button>
+  <div>{{ vm.result }}</div>
+</div>
+<script>
+  angular.module('app', [])
+    .controller('MainController', function () {
+      this.submit = function () {
+        var input = +this.input
+        this.result = input * input
+      }
+    })
+</script>
