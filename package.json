@@ -9,9 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "babel": "^6.5.2",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0"
   },
   "standard": {
-    "globals": ["angular"]
+    "globals": [
+      "angular"
+    ]
   }
 }
