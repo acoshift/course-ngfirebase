@@ -1,0 +1,33 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
+<div class="ui container" style="padding-top: 30px;">
+  <div class="ui segment">
+    <div class="ui form">
+      <div class="field">
+        <label>Input Number 1</label>
+        <input ng-model="num1">
+      </div>
+      <div class="field">
+        <label>Input Number 2</label>
+        <input ng-model="num2">
+      </div>
+      <div class="field">
+        <label>Output (no ng-cloak)</label>
+        {{ num1 * num2 }}
+      </div>
+      <div class="field" ng-cloak>
+        <label>Output (with ng-cloak)</label>
+        {{ num1 * num2 }}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  angular
+    .module('app', [])
+
+  setTimeout(function () {
+    // emulation angular very long
+    angular.bootstrap(document, ['app'])
+  }, 2000)
+</script>
