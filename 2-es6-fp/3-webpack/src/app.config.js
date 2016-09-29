@@ -4,13 +4,17 @@ angular
   .module('app')
   .config(Config)
 
-function Config ($stateProvider, $urlRouterProvider) {
+Config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider']
+function Config ($stateProvider, $urlRouterProvider, $locationProvider) {
+  $locationProvider.html5Mode(true)
+
   $urlRouterProvider.otherwise('/')
 
   $stateProvider
     .state('landing', {
       url: '/',
       template: require('./landing.html'),
-      controller: 'AppController'
+      controller: 'AppController',
+      controllerAs: 'vm'
     })
 }

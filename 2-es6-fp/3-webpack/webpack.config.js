@@ -1,4 +1,4 @@
-// const webpack = require('webpack')
+const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -48,7 +48,7 @@ module.exports = {
   plugins: [
     // new webpack.optimize.DedupePlugin(),
     // new webpack.optimize.OccurenceOrderPlugin(),
-    // new webpack.optimize.UglifyJsPlugin({ mangle: { keep_fnames: true }, sourcemap: false }),
+    new webpack.optimize.UglifyJsPlugin({ mangle: { keep_fnames: true }, sourcemap: false, compress: { warnings: false } }),
     // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.[hash].js', minChunks: Infinity }),
     new HtmlWebpackPlugin({
       inject: true,
