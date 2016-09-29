@@ -1,4 +1,4 @@
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -19,12 +19,11 @@ module.exports = {
     }
   },
   entry: {
-    'vendor': './vendor.js',
-    'entry': './entry.js'
+    'main': './main.js'
   },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'entry.[hash].js',
+    filename: 'main.[hash].js',
     chunkFilename: '[hash].[id].chunk.js'
   },
   resolve: {
@@ -36,24 +35,24 @@ module.exports = {
     //   { test: /\.js$/, loader: 'standard', exclude: /(web_modules|node_modules|bower_components)/ }
     // ],
     loaders: [
-      { test: /\.js$/, exclude: /(web_modules|node_modules|bower_components)/, loader: 'ng-annotate!babel?presets[]=es2015&presets[]=stage-0' },
-      { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file?name=assets/images/[hash].[ext]' },
-      { test: /\.(ttf|eot)(\?[a-z0-9\.=]+)?$/, loader: 'file?name=assets/fonts/[hash].[ext]' },
+      { test: /\.js$/, exclude: /(web_modules|node_modules|bower_components)/, loader: 'babel?presets[]=es2015&presets[]=stage-0' },
+      // { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file?name=assets/images/[hash].[ext]' },
+      // { test: /\.(ttf|eot)(\?[a-z0-9\.=]+)?$/, loader: 'file?name=assets/fonts/[hash].[ext]' },
       { test: /\.html?$/, loader: 'html?minimize=true&attrs[]=img:src&attrs[]=img:fallback-src' },
-      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
-      { test: /\.css$/, loaders: ['style', 'css'] },
-      { test: /\.woff$/, loader: 'url?limit=10000&mimetype=application/font-woff&name=assets/fonts/[hash].[ext]' },
-      { test: /\.woff2$/, loader: 'url?limit=10000&mimetype=application/font-woff2&name=assets/fonts/[hash].[ext]' }
+      // { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
+      // { test: /\.css$/, loaders: ['style', 'css'] },
+      // { test: /\.woff$/, loader: 'url?limit=10000&mimetype=application/font-woff&name=assets/fonts/[hash].[ext]' },
+      // { test: /\.woff2$/, loader: 'url?limit=10000&mimetype=application/font-woff2&name=assets/fonts/[hash].[ext]' }
     ]
   },
   plugins: [
     // new webpack.optimize.DedupePlugin(),
     // new webpack.optimize.OccurenceOrderPlugin(),
     // new webpack.optimize.UglifyJsPlugin({ mangle: { keep_fnames: true }, sourcemap: false }),
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.[hash].js', minChunks: Infinity }),
+    // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.[hash].js', minChunks: Infinity }),
     new HtmlWebpackPlugin({
-      inject: false,
-      template: '!!ejs!./src/index.html'
+      inject: true,
+      template: './index.html'
     })
   ]
 }
