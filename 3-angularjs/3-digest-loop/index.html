@@ -1,0 +1,35 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<div ng-controller="AppController as vm">
+  <input ng-model="vm.input">
+  <button ng-click="vm.ok()">OK</button>
+  <h1>Hi, {{ vm.result }}</h1>
+</div>
+<script>
+  angular
+    .module('app', [])
+    .controller('AppController', function ($timeout, $scope) {
+      this.ok = () => {
+        // $timeout(() => {
+        //   console.log('set input to ' + this.input)
+        //   this.result = this.input
+        // })
+
+        // setTimeout(() => {
+        //   $scope.$apply(() => {
+        //     console.log('set input to ' + this.input)
+        //     this.result = this.input
+        //   })
+        // })
+
+        setTimeout(() => {
+          console.log('set input to ' + this.input)
+          this.result = this.input
+          $scope.$apply(() => {
+            $scope.$apply()
+          })
+        })
+      }
+    })
+
+  angular.bootstrap(document, ['app'])
+</script>
