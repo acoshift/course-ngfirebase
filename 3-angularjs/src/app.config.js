@@ -4,7 +4,7 @@ angular
   .module('app')
   .config(Config)
 
-Config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider']
+// Config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider']
 function Config ($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true)
 
@@ -14,7 +14,13 @@ function Config ($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('landing', {
       url: '/',
       template: require('./landing.html'),
-      controller: 'AppController',
+      controller: 'LandingController',
+      controllerAs: 'vm'
+    })
+    .state('detail', {
+      url: '/:type/:data',
+      template: require('./detail.html'),
+      controller: 'DetailController',
       controllerAs: 'vm'
     })
 }

@@ -8,15 +8,7 @@ module.exports = {
   debug: true,
   devServer: {
     historyApiFallback: true,
-    inline: true,
-    compress: true,
-    watchOptions: {
-      aggregateTimeout: 300,
-      poll: 1000
-    },
-    stats: {
-      colors: true
-    }
+    inline: true
   },
   entry: {
     'main': './main.js'
@@ -38,7 +30,8 @@ module.exports = {
       { test: /\.js$/, exclude: /(web_modules|node_modules|bower_components)/, loader: 'babel?presets[]=es2015&presets[]=stage-0' },
       // { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file?name=assets/images/[hash].[ext]' },
       // { test: /\.(ttf|eot)(\?[a-z0-9\.=]+)?$/, loader: 'file?name=assets/fonts/[hash].[ext]' },
-      { test: /\.html?$/, loader: 'html?minimize=true&attrs[]=img:src&attrs[]=img:fallback-src' },
+      { test: /\.html?$/, loader: 'html' },
+      // { test: /\.html?$/, loader: 'html?minimize=true&attrs[]=img:src&attrs[]=img:fallback-src' },
       // { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
       // { test: /\.css$/, loaders: ['style', 'css'] },
       // { test: /\.woff$/, loader: 'url?limit=10000&mimetype=application/font-woff&name=assets/fonts/[hash].[ext]' },
@@ -48,7 +41,7 @@ module.exports = {
   plugins: [
     // new webpack.optimize.DedupePlugin(),
     // new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: { keep_fnames: true }, sourcemap: false, compress: { warnings: false } }),
+    // new webpack.optimize.UglifyJsPlugin({ mangle: { keep_fnames: true }, sourcemap: false, compress: { warnings: false } }),
     // new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.[hash].js', minChunks: Infinity }),
     new HtmlWebpackPlugin({
       inject: true,

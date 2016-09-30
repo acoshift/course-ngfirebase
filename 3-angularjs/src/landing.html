@@ -1,2 +1,11 @@
 <h1>Landing</h1>
 <p>Hi, {{ vm.name | toUpper }}</p>
+<select ng-model="vm.select" ng-change="vm.resetList()">
+  <option value="Artist">Artist</option>
+  <option value="Album">Album</option>
+</select>
+<div style="padding-top: 20px;">
+  <div ng-repeat="track in vm.list">
+    <a ui-sref="detail({ type: vm.select, data: track })">{{ track }}</a>
+  </div>
+</div>
