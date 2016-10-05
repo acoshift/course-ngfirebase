@@ -1,0 +1,13 @@
+<div class="ui segment">
+  <form class="ui form" ng-submit="vm.save()">
+    <div class="field">
+      <label>Name</label>
+      <input ng-model="vm.name">
+    </div>
+    <div class="field">
+      <label>About me</label>
+      <input ng-model="vm.aboutMe">
+    </div>
+    <button class="ui submit blue button" ng-class="{loading: vm.saving}">Save</button>
+  </form>
+</div>
