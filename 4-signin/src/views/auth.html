@@ -1,0 +1,37 @@
+<div class="ui fluid container">
+  <div class="ui center aligned grid">
+    <div class="row">
+      <div class="column">
+        <img class="ui centered image" src="../assets/acourse.svg" style="width: 220px; height: 220px;">
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <h1>Acourse</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="ui center aligned stacked segment" style="min-width: 500px;">
+        <div class="ui left aligned fluid container">
+          <div class="ui form">
+            <div class="field">
+              <label>Email</label>
+              <input ng-model="vm.email">
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <input type="password" ng-model="vm.password">
+            </div>
+            <button ng-click="vm.signIn()" class="ui blue fluid button" ng-class="{loading: vm.signInLoading}">Sign In</button>
+            <br>
+            <button ng-click="vm.signUp()" class="ui green fluid button">Sign Up</button>
+            <br>
+            <button ng-click="vm.googleSignIn()" class="ui red fluid button">Google Sign In</button>
+            <br>
+            <button ng-click="vm.signOut()" class="ui pink fluid button">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
