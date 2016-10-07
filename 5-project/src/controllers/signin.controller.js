@@ -17,4 +17,8 @@ export class SignInController {
         window.alert(err.message)
       })
   }
+
+  googleSignIn () {
+    this.$firebase.signInWithGoogle()
+  }
 }

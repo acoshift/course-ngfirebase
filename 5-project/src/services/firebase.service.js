@@ -7,11 +7,15 @@ export class FirebaseService {
 
     this.$q = $q
     this.$rootScope = $rootScope
-    this.currentUser = new BehaviorSubject()
+    this._currentUser = new BehaviorSubject()
 
     firebase.auth().onAuthStateChanged((user) => {
-      this.currentUser.next(user)
+      this._currentUser.next(user)
     })
+  }
+
+  currentUser () {
+    return this._currentUser.filter((x) => x !== undefined)
   }
 
   signOut () {
@@ -70,6 +74,26 @@ export class FirebaseService {
           callback(snapshot.val())
         })
       }, 0)
+    })
+  }
+
+  upload (path, file) {
+    return Observable.create((o) => {
+      firebase.storage().ref(path).put(file)
+        .then((res) => {
+          setTimeout(() => {
+            this.$rootScope.$apply(() => {
+              o.next(res)
+              o.complete()
+            }, 0)
+          })
+        }, (err) => {
+          setTimeout(() => {
+            this.$rootScope.$apply(() => {
+              o.error(err)
+            })
+          }, 0)
+        })
     })
   }
 }

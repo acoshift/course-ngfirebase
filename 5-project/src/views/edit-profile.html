@@ -1,6 +1,11 @@
 <div class="ui segment">
   <form class="ui form" ng-submit="vm.save()">
     <div class="field">
+      <label>Photo</label>
+      <img class="ui small image" ng-src="{{vm.photo}}">
+      <input type="file" onchange="angular.element(this).scope().vm.selectedFile(this)">
+    </div>
+    <div class="field">
       <label>Name</label>
       <input ng-model="vm.name">
     </div>

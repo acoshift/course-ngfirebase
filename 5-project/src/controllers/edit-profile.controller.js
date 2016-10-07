@@ -4,6 +4,7 @@ export class EditProfileController {
 
     this.$me = $me
     this.$state = $state
+    this.$scope = $scope
     this.name = ''
     this.aboutMe = ''
 
@@ -14,6 +15,7 @@ export class EditProfileController {
           console.log(profile)
           this.name = profile.name
           this.aboutMe = profile.aboutMe
+          this.photo = profile.photo
         }
       )
   }
@@ -22,11 +24,23 @@ export class EditProfileController {
     this.saving = true
     this.$me.saveProfile({
       name: this.name,
-      aboutMe: this.aboutMe
+      aboutMe: this.aboutMe,
+      photo: this.photo
     })
-      .then(() => {
+      .subscribe(() => {
         this.saving = false
         this.$state.go('profile')
       })
+  }
+
+  selectedFile (file) {
+    const f = file.files[0]
+    if (!f) return
+    this.$me.upload(f)
+      .subscribe(
+        (res) => {
+          this.photo = res
+        }
+      )
   }
 }

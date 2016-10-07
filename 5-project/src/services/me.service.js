@@ -6,13 +6,18 @@ export class MeService {
   }
 
   saveProfile (profile) {
-    const currentUser = this.$firebase.currentUser()
-    return this.$firebase.set(`user/${currentUser.uid}`, profile)
+    return this.$firebase.currentUser()
+      .flatMap((currentUser) => this.$firebase.set(`user/${currentUser.uid}`, profile))
   }
 
   getProfile () {
-    return this.$firebase.currentUser
-      .filter((currentUser) => currentUser !== undefined)
+    return this.$firebase.currentUser()
       .flatMap((currentUser) => this.$firebase.onValue(`user/${currentUser.uid}`))
+  }
+
+  upload (file) {
+    return this.$firebase.currentUser()
+      .flatMap(({ uid }) => this.$firebase.upload(`user/${uid}/${Date.now()}`, file))
+      .map((res) => res.downloadURL)
   }
 }
