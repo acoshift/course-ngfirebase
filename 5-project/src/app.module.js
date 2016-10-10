@@ -3,6 +3,7 @@ import angular from 'angular'
 import Config from './app.config'
 import Controllers from './controllers'
 import Services from './services'
+import Components from './components'
 
 const app = angular.module('app', ['ui.router'])
 
@@ -14,4 +15,8 @@ Controllers.forEach((controller) => {
 
 Services.forEach((service) => {
   app.service(service.name, service.service)
+})
+
+Components.forEach((component) => {
+  app.component(component.name, component)
 })

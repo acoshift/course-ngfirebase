@@ -51,14 +51,12 @@ export default function Config ($stateProvider, $urlRouterProvider, $locationPro
     .state('profile', {
       url: '/profile',
       parent: 'layout',
-      template: require('./views/profile.html')
+      template: '<profile></profile>'
     })
     .state('edit-profile', {
       url: '/profile/edit',
       parent: 'layout',
-      template: require('./views/edit-profile.html'),
-      controller: 'EditProfileController',
-      controllerAs: 'vm'
+      template: '<profile-edit></profile-edit>'
     })
 }
 
