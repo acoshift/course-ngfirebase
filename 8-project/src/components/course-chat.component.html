@@ -1,0 +1,9 @@
+<div class="ui segment">
+  <div ng-repeat="x in $ctrl.messages">
+    {{ x.user.name }}: {{ x.m }} ({{ x.t }})
+  </div>
+  <div class="ui input">
+    <input ng-model="$ctrl.currentMessage">
+    <div class="ui button" ng-click="$ctrl.send()">Send</div>
+  </div>
+</div>

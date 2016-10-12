@@ -1,0 +1,8 @@
+
+  <div class="content">
+    <a ui-sref="course-view({ id: $ctrl.course.id })" class="header">{{ $ctrl.course.name }}</a>
+    <div class="meta">{{ $ctrl.course.timestamp | date }}</div>
+    <a ui-sref="course-view({ id: $ctrl.course.id })"  class="description">
+      {{ $ctrl.course.description }}
+    </a>
+  </div>
