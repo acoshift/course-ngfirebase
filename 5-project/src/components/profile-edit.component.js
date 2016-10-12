@@ -1,4 +1,4 @@
-export class EditProfileController {
+class ProfileEditController {
   constructor ($me, $state, $scope) {
     'ngInject'
 
@@ -43,4 +43,10 @@ export class EditProfileController {
         }
       )
   }
+}
+
+export default {
+  name: 'profileEdit',
+  template: require('./profile-edit.component.html'),
+  controller: ProfileEditController
 }
