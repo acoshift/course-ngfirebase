@@ -1,0 +1,15 @@
+<div class="ui segment">
+  <h2 class="ui header">Create Course</h2>
+  <form class="ui form" ng-submit="$ctrl.submit()">
+    <div class="field">
+      <label>Name</label>
+      <input ng-model="$ctrl.name">
+    </div>
+    <div class="field">
+      <label>Description</label>
+      <textarea ng-model="$ctrl.description"></textarea>
+    </div>
+    <button class="ui submit blue button">Create</button>
+    <a ui-sref="home" class="ui red button">Cancel</a>
+  </form>
+</div>

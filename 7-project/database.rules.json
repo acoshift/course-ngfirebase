@@ -1,0 +1,35 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "user": {
+      ".read": "auth != null",
+      "$user_id": {
+        ".write": "auth.uid === $user_id"
+      }
+    },
+    "course": {
+      ".read": "auth != null",
+      "$course_id": {
+        ".write": "auth.uid === data.child('owner').val() || !data.exists()",
+        ".validate": "newData.hasChildren(['owner', 'name', 'timestamp'])",
+        ".indexOn": ["owner"],
+        "owner": {
+          ".validate": "newData.val() === auth.uid"
+        },
+        "name": {
+          ".validate": "newData.isString()"
+        },
+        "description": {
+          ".validate": "newData.isString()"
+        },
+        "timestamp": {
+          ".validate": "newData.val() <= now"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}

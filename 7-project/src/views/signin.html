@@ -1,0 +1,16 @@
+<div class="ui form">
+  <div class="field">
+    <label>Email</label>
+    <input ng-model="vm.email">
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input type="password" ng-model="vm.password">
+  </div>
+  <div class="ui basic right aligned segment">
+    <a ui-sref="auth.register">Register <i class="right chevron icon"></i></a>
+  </div>
+  <button ng-click="vm.signIn()" class="ui blue fluid button" ng-class="{loading: vm.signInLoading}">Sign In</button>
+  <br>
+  <button ng-click="vm.googleSignIn()" class="ui red fluid button">Google Sign In</button>
+</div>
