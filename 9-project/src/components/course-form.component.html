@@ -1,0 +1,15 @@
+<form class="ui form" ng-submit="$ctrl.onSubmit({ model: $ctrl.model })">
+  <div class="field">
+    <label>Name</label>
+    <input ng-model="$ctrl.model.name">
+  </div>
+  <div class="field">
+    <label>Description</label>
+    <textarea ng-model="$ctrl.model.description"></textarea>
+  </div>
+  <button class="ui submit blue button">
+    <span ng-if="$ctrl.mode !== 'edit'">Create</span>
+    <span ng-if="$ctrl.mode === 'edit'">Save</span>
+  </button>
+  <a ui-sref="home" class="ui red button">Cancel</a>
+</form>

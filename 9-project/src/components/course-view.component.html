@@ -1,0 +1,7 @@
+<div class="ui segment">
+  <h2 class="ui header">{{ $ctrl.course.name }}</h2>
+  <div class="ui blue button" ng-if="!$ctrl.isApply && !$ctrl.isOwner">Apply</div>
+  <div class="ui green button" ng-if="$ctrl.isOwner" ui-sref="course-edit({ id: $ctrl.courseId })">Edit</div>
+  <a class="ui blue button" ui-sref="course-chat({ id: $ctrl.courseId })">Chat room</a>
+  <p>{{ $ctrl.course.description }}</p>
+</div>

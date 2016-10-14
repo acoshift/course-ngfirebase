@@ -1,0 +1,86 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "user": {
+      ".read": "auth != null",
+      "$user_id": {
+        ".write": "auth.uid === $user_id"
+      }
+    },
+    "online": {
+      ".write": true,
+      "$online_id": {
+        ".validate": "newData.val() === auth.uid || newData.val() === true"
+      }
+    },
+    "course": {
+      ".read": "auth != null",
+      ".indexOn": ["owner", "open"],
+      "$course_id": {
+        ".write": "auth.uid === data.child('owner').val() || (!data.exists() && root.child('instructor/' + auth.uid).val() === true)",
+        "owner": {
+          ".validate": "newData.val() === auth.uid"
+        },
+        "name": {
+          ".validate": "newData.isString()"
+        },
+        "description": {
+          ".validate": "newData.isString()"
+        },
+        "timestamp": {
+          ".validate": "newData.val() <= now"
+        },
+        "open": {
+          ".validate": "newData.isBoolean()"
+        },
+        "student": {
+          "$user_id": {
+            ".validate": "auth.uid === $user_id && newData.val() === true"
+          }
+        },
+        "favorite": {
+          "$user_id": {
+            ".validate": "auth.uid === $user_id && newData.val() === true"
+          }
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+    "instructor": {
+      ".read": "auth != null"
+    },
+    "userCourse": {
+      ".read": "auth != null",
+      "$user_id": {
+        ".write": "auth.uid === $user_id",
+        "$course_id": {
+          ".validate": "auth.uid === $user_id && newData.val() === true"
+        }
+      }
+    },
+    "chat": {
+      ".read": "auth != null",
+      "$course_id": {
+        ".read": "root.child('course/' + $course_id + '/owner').val() === auth.uid || root.child('course/' + $course_id + '/student/' + auth.uid).val() === true",
+        "$message_id": {
+          ".write": "!data.exists() && (root.child('course/' + $course_id + '/owner').val() === auth.uid || root.child('course/' + $course_id + '/student/' + auth.uid).val() === true)",
+          "u": {
+            ".validate": "newData.val() === auth.uid"
+          }
+        }
+      }
+    },
+    "queue": {
+      ".write": "auth != null",
+      "$queue_id": {
+        "userId": {
+          ".validate": "auth.uid === newData.val()"
+        },
+        ".validate": "!data.exists()"
+      }
+    }
+  }
+}
