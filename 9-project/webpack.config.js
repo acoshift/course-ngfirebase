@@ -30,7 +30,7 @@ module.exports = {
       { test: /\.js$/, exclude: /(web_modules|node_modules|bower_components)/, loader: 'ng-annotate!babel?presets[]=es2015&presets[]=stage-0' },
       { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file?name=assets/images/[hash].[ext]' },
       { test: /\.(ttf|eot)(\?[a-z0-9\.=]+)?$/, loader: 'file?name=assets/fonts/[hash].[ext]' },
-      { test: /\.html?$/, loader: 'html' },
+      { test: /\.html?$/, loader: 'html?interpolate=require' },
       // { test: /\.html?$/, loader: 'html?minimize=true&attrs[]=img:src&attrs[]=img:fallback-src' },
       // { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
       { test: /\.css$/, loaders: ['style', 'css'] },
